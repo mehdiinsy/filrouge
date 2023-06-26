@@ -8,7 +8,10 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Command\UserPasswordHashCommand;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 
 class InscriptionController extends AbstractController
 {
@@ -18,7 +21,7 @@ class InscriptionController extends AbstractController
     }
 
     #[Route('/inscription', name: 'app_inscription')]
-    public function index(Request $request): Response
+    public function index(Request $request, UserPasswordHasherInterface $uphi): Response
     {
 
         $user = new User();
@@ -29,6 +32,11 @@ class InscriptionController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             //recup le donnees du form
             $user = $form->getData();
+            //recup mdp non crypte
+            $pwd = $uphi->hashPassword($user, $user->getPassword());
+            //remettre le mdp crypte dans l'objet $user
+            $user->setPassword($pwd);
+            //dd($pwd);
             //figer les donnees a renvoyer vers la bdd
             $this->em->persist($user);
             //maj dans la bdd

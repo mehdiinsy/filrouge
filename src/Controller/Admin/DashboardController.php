@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Adresse;
 use App\Entity\User;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -51,7 +52,12 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Filrouge', 'fa fa-home');
-        yield MenuItem::linkToCrud('Les utilisateurs', 'fas fa-user-tie', User::class);
-        yield MenuItem::linkToCrud('Les adresse', 'fas fa-address-book', Adresse::class);
+
+        yield MenuItem::section('Filrouge');
+        yield MenuItem::subMenu('Utilisateurs', 'fas fa-user-tie', User::class)->setSubItems([
+        MenuItem::linkToCrud('Ajouter', 'fas fa-plus', User::class)->setAction(Crud::PAGE_NEW),
+        MenuItem::linkToCrud('Visualiser', 'fas fa-eye', User::class)
+        ]);
+        yield MenuItem::linkToCrud('Adresses', 'fas fa-address-book', Adresse::class);
     }
 }

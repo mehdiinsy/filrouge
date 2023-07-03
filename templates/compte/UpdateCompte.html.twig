@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}modifications compte{% endblock %}
+
+{% block body %}
+{% if notif %}
+<div class="alert alert-info">
+{{notif}}
+</div>
+{% endif %}
+
+<div class="container">
+    <div class="row justify-content-center">
+  <div class="form-group col-md-7 col-md-offset-5 align-center ">
+<h1>Modification de Compte</h1></br>
+{{ form(formUpdate)}}
+
+   </div> 
+        </div>
+    </div>
+
+{% endblock %}

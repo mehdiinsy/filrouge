@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes adresse{% endblock %}
+
+{% block body %}
+<br>
+<div class="row justify-content-center m-3">
+{# <a href="#" class="card-link">Ajouter une adresse</a> #}
+    <a  class="btn btn-success" href="{{ path('ajouterAdresse')}}">ajouter une adresse +</a>
+</div>
+
+{% for adr in app.user.adresses %}
+<br>
+<div class="container">
+    <div class="row justify-content-center m-5">
+  <div class="form-group col-md-4 col-md-offset-5 align-center ">
+
+<div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+  <div class="card-header">{{ adr.libelle}}</div>
+  <div class="card-body">
+    <h4 class="card-title">{{ adr.prenom ~ ' ' ~ adr.nom }}</h4>
+    <p class="card-text">{{ adr.textAdresse }}<br>{{ adr.cp}} - {{ adr.ville}} - {{ adr.pays}}</p>
+    <a href="{{ path('modifierAdresse',{'id': adr.id})}}" class="btn btn-success">modifier</a>
+    <a href="{{ path('supprimerAdresse',{'id': adr.id})}}" class="btn btn-danger">supprimer</a>
+
+
+  </div>
+</div>
+</div>
+</div>
+</div>
+{% endfor %}
+{% endblock %}

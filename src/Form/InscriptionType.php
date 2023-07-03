@@ -77,7 +77,7 @@ class InscriptionType extends AbstractType
 
             
             ->add('submit', SubmitType::class, [
-                'label' => "s'inscrire"
+                'label' => "s'inscrire",
             ])
         ;
     }

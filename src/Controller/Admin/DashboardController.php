@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Adresse;
+use App\Entity\Category;
+use App\Entity\Product;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -59,5 +61,7 @@ class DashboardController extends AbstractDashboardController
         MenuItem::linkToCrud('Visualiser', 'fas fa-eye', User::class)
         ]);
         yield MenuItem::linkToCrud('Adresses', 'fas fa-address-book', Adresse::class);
+        yield MenuItem::linkToCrud('Category', 'fas fa-bars', Category::class);
+        yield MenuItem::linkToCrud('Produits', 'fas fa-vector-square', Product::class);
     }
 }

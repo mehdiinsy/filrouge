@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catalogue{% endblock %}
+
+{% block body %}
+{# <div class="row">
+<div class="col-sm-9">
+<div class="row"> #}
+
+{% for product in products %}
+{# <div class="col-md-4"> #}
+<div class="row">
+<div class="col-sm-9">
+<div class="row">
+<a href="{{path('product', {'id' : product.id})}}"> <img alt="oups" class="w-25 h-75 m-5" src="/assets/img/products/images/{{product.image}}">
+<span>{{product.name}}  </span></a>
+<p>{{ (product.price /100) |number_format(2,',','.')}} € </p>
+</div>
+</div>
+</div>
+{# </div> #}
+{% endfor %}
+
+{# 
+</div>
+</div>
+</div> #}
+
+
+
+
+{% endblock %}

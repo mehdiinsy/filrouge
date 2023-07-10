@@ -15,9 +15,11 @@
 <a href="{{path('product', {'id' : product.id})}}"> <img alt="oups" class="w-25 h-75 m-5" src="/assets/img/products/images/{{product.image}}">
 <span>{{product.name}}  </span></a>
 <p>{{ (product.price /100) |number_format(2,',','.')}} € </p>
+<p>{{product.subtitle}}</p>
 </div>
 </div>
 </div>
+<a href="{{ path('ajouterPanier', { 'id' : product.id})}}" class="btn btn-primary">Ajouter au panier</a>
 {# </div> #}
 {% endfor %}
 

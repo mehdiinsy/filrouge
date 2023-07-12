@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Choix des adresses{% endblock %}
+
+{% block body %}
+<div class="row">
+<div class="col-2"></div>
+<div class="col-7">
+<h1 class="text-center"> Sélectionner votre livreur </h1>
+<hr><br>
+
+</div>
+
+{% set formhtml %}
+
+{{form_start(f, { action : path('choisirTransporteur')})}}
+{{form_row(f.adresseLivraison, {
+    'label_attr' : { 'class' : 'fs-6'},
+    'attr' : { 'class' : 'alert alert-primary'}
+}) 
+}}
+{{form_row(f.adresseFacturation, {
+    'label_attr' : { 'class' : 'fs-6'},
+    'attr' : { 'class' : 'alert alert-primary'}
+}) 
+}}
+<hr>
+
+{{ form_widget(f) }}
+{{ form_end(f) }}
+
+{% endset %}
+{{ formhtml|replace({'[br]' : '<br>'})|raw}}
+</div>
+</div>
+{% endblock %}

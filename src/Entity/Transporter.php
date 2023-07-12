@@ -62,4 +62,10 @@ class Transporter
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->nameSociety . "[br]" . $this->descriptionSociety .  "[br]" . number_format($this->priceSociety,2,',','.') . " €";
+         
+    }
 }

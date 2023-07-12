@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ChoiceDelivery{% endblock %}
+
+{% block body %}
+
+<div class="row">
+<div class="col-2"></div>
+<div class="col-7">
+<h1 class="text-center"> Sélectionner votre livreur </h1>
+<hr><br>
+
+</div>
+
+{% set formhtml %}
+{% set params = {'adrL' : adrL, 'adrF' : adrF } %}
+{{ form_start(f, { action : path('recap', params) }) }}
+{{ form_row(f.transporteurs, {
+    'label_attr' : { 'class' : 'fs-6'},
+    'attr' : { 'class' : 'alert alert-primary'}
+}) 
+}}
+<hr>
+
+{{ form_widget(f) }}
+{{ form_end(f) }}
+
+{% endset %}
+{{ formhtml|replace({'[br]' : '<br>'})|raw}}
+</div>
+</div>
+{% endblock %}
+
+
+

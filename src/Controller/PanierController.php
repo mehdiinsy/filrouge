@@ -23,4 +23,23 @@ class PanierController extends AbstractController
         return $this->redirectToRoute('panier');
         
     }
+
+    #[Route('/panier/reduire/{id}', name: 'reduirePanier')]
+    public function reduirePanier(Panier $panier, $id): Response
+    {
+        $panier->reduire($id);
+        return $this->redirectToRoute('panier');
+    }
+    #[Route('/panier/supprimer/{id}', name: 'supprimerPanier')]
+    public function supprimerPanier(Panier $panier, $id): Response
+    {
+        $panier->supprimer($id);
+        return $this->redirectToRoute('panier');
+    }
+    #[Route('/panier/vider', name: 'viderPanier')]
+    public function viderPanier(Panier $panier): Response
+    {
+        $panier->vider();
+        return $this->redirectToRoute('panier');
+    }
 }

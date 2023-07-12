@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Récapitulatif !{% endblock %}
+
+{% block jsStripe %}
+    <script src="https://js.stripe.com/v3/"></script>
+{% endblock %}
+
+{% block body %}
+<div class="row">
+<div class="col-md-4">
+<div>
+<strong class="fs-6">Adresse de livraison choisie</strong><br>
+<hr>
+{{ adrL|replace({ '[br]' : '<br>' })|raw }}
+<hr>
+
+</div>
+<div>
+<strong class="fs-6">Adresse de facturation choisie</strong><br>
+<hr>
+{{ adrF|replace({ '[br]' : '<br>' })|raw }}
+<hr>
+
+</div>
+<div>
+<strong class="fs-6">Transporteur choisie</strong><br>
+<hr>
+{{ transport.nameSociety }} <br>
+{{ transport.descriptionSociety }} <br>
+{{ (transport.priceSociety)|number_format(2,',','.') }} €
+<hr>
+</div>
+</div>
+<div class="col-md-8">
+<h2>Récapitulatif de mon panier</h2>
+<div>
+<table class="table table-hover">
+<thead>
+<tr>
+<th scope="col">Image</th>
+<th scope="col">Nom</th>
+<th scope="col">Quantité</th>
+<th scope="col">Prix</th>
+<th scope="col">Prix total</th>
+</tr>
+</thead>
+
+<tbody>
+{% set t = null %}
+{% for prod in panier %}
+<tr>
+<td width="600px"><img class="img-fluid img-thumbnail rounded h-25 w-25" alt="oups" src="/assets/img/products/images/{{prod.product.image}}"></td>
+<td>{{prod.product.name}}</td>
+
+<td>
+                    <a href="{{ path('reduirePanier', { 'id' : prod.product.id }) }}"><i class="fas fa-minus"></i></a>
+                        {{ prod.qty }}
+                    <a href="{{ path('ajouterPanier', { 'id' : prod.product.id }) }}"><i class="fas fa-plus"></i></a>
+                </td>
+
+                <td>{{ (prod.product.price / 100)|number_format(2,',','.') }} €</td>
+                <td>
+                    {{ ((prod.product.price * prod.qty) / 100)|number_format(2,',','.') }} €
+                </td>
+</tr>
+            {% set t = t + (prod.product.price * prod.qty) %}
+
+{% endfor %}
+</tbody>
+</table>
+<hr>
+<div class="text-end">
+<div class="text-end">
+    <strong>Sous-total : </strong><span> {{ (t / 100)|number_format(2,',','.') }} €</span><br>
+    <strong>Frais de livraison : </strong><span> {{ (transport.priceSociety)|number_format(2,',','.') }} €</span><br>
+    <strong>Total : </strong><span> {{ ((t / 100) + transport.priceSociety)|number_format(2,',','.') }} €</span><br>
+    <a class="btn btn-success btn-block mt-5" id="btnPayer">Payer |{{ ((t / 100) + transport.priceSociety)|number_format(2,',','.') }} €</a>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}
+{% block script %}
+<script>
+//utiliser la cle publique pour receptionner l'evenement
+var stripe = Stripe("pk_test_51NT3M7JHodYJkToyoSFPFsRv3LQWw4BHKExIQz73Uae5fUR89iwA33fQAoCVGMQVQ1Nc0NAua3z8hrd0qCGoC62m00y6y2WvSm");
+var checkBtn = document.getElementById('btnPayer');
+checkBtn.addEventListener("click", function (){
+    fetch("/commande/create-session/{{ reference }}", 
+    {
+        method: 'POST'
+    })
+    .then(function (response){
+        return response.json();
+    })
+    .then(function (session){
+        return stripe.redirectToCheckout({sessionId : session.id})
+    })
+    .then(function (result){
+        if(result.error){
+            alert(result.error.message);
+        }
+    })
+    .catch(function (error){
+        console.error("error:", error);
+    });
+});
+</script>
+{% endblock %}

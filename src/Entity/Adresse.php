@@ -13,6 +13,11 @@ class Adresse
     #[ORM\Column]
     private ?int $id = null;
 
+    public function __toString()
+    {
+        return $this->libelle;
+    }
+
     #[ORM\ManyToOne(inversedBy: 'adresses')]
     private ?User $user = null;
 

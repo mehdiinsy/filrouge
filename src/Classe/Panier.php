@@ -81,6 +81,18 @@ public function ajouter($id){
         }
         return $this->rs->getSession()->set('panier', $panier);
     }
+    public function nbArticles(){
+        $nb = 0;
+        if($this->afficher()){
+            foreach($this->afficher() as $id => $qty){
+                // $nb++; si vous voulez compter les différents articles
+                // Si vous voulez compter les quantités :
+                $nb += $qty;
+                // $nb++;
+            }
+        }
+        return $nb;
+    }
 
 }
 

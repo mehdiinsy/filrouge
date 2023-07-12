@@ -17,13 +17,36 @@
 </thead>
 
 <tbody>
+{% set t = null %}
 {% for prod in panier %}
 <tr>
-<td><img class="img-fluid img-thumbnail rounded h-25 w-25" alt="oups" src="/assets/img/products/images/{{prod.product.image}}"></td>
+<td width="600px"><img class="img-fluid img-thumbnail rounded h-25 w-25" alt="oups" src="/assets/img/products/images/{{prod.product.image}}"></td>
 <td>{{prod.product.name}}</td>
+
+<td>
+                    <a href="{{ path('reduirePanier', { 'id' : prod.product.id }) }}"><i class="fas fa-minus"></i></a>
+                        {{ prod.qty }}
+                    <a href="{{ path('ajouterPanier', { 'id' : prod.product.id }) }}"><i class="fas fa-plus"></i></a>
+                </td>
+
+                <td>{{ (prod.product.price / 100)|number_format(2,',','.') }} €</td>
+                <td>
+                    {{ ((prod.product.price * prod.qty) / 100)|number_format(2,',','.') }} €
+                </td>
+                <td>
+                    <a href="{{ path('product', { 'id' : prod.product.id }) }}"><i class="fas fa-eye"></i></a><br>
+                    <a href="{{ path('supprimerPanier', { 'id' : prod.product.id }) }}"><i class="fas fa-trash"></i></a>
+                </td>
 </tr>
+            {% set t = t + (prod.product.price * prod.qty) %}
+
 {% endfor %}
 </tbody>
-
 </table>
+
+<div class="text-end">
+    <span>Total du panier : {{ (t / 100)|number_format(2,',','.') }} €</span><br>
+    <a class="btn btn-success btn-block mt-5" href="{{ path('choisirAdresse')}}"><i class="fas fa-check"></i>Valider mon panier</a>
+</div>
+
 {% endblock %}

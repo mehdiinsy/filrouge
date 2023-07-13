@@ -8,12 +8,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PremiertestController extends AbstractController
 {
-    #[Route('/premiertest', name: 'app_premiertest')]
+    #[Route('/home', name: 'home')]
     public function index(): Response
     {
         $name = "Marco";
         $adresse = "31 rue sphynx";
-        return $this->render('premiertest/index.html.twig', [
+        return $this->render('home/home.html.twig', [
             'controller_name' => 'PremiertestController',
             "nom" => $name,
             "adr" => $adresse

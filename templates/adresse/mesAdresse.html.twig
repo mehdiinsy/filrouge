@@ -6,16 +6,18 @@
 <br>
 <div class="row justify-content-center m-3">
 {# <a href="#" class="card-link">Ajouter une adresse</a> #}
-    <a  class="btn btn-success w-50" href="{{ path('ajouterAdresse')}}">Add an adresse +</a>
+    <a  class="btn btn-info w-50" href="{{ path('ajouterAdresse')}}">Add an adresse +</a>
 </div>
 
-{% for adr in app.user.adresses %}
 <br>
-<div class="container">
-    <div class="row justify-content-center m-5">
-  <div class="form-group col-md-4 col-md-offset-5 align-center ">
+<div class="row justify-content-center m-4">
+<div class="col w-75 bg-warning rounded p-4" style="display: flex; flex-wrap: wrap;">
+<div class="row justify-content-center m-3">
+{% for adr in app.user.adresses %}
+    {# <div class="row justify-content-center m-5">
+  <div class="form-group col-md-4 col-md-offset-5 align-center"> #}
 
-<div class="card text-white bg-dark m-3" style="max-width: 20rem;">
+<div class="card text-white w-25 bg-dark m-4" style="">
   <div class="card-header" style="color: #FFC433;">{{ adr.libelle}}</div>
   <div class="card-body">
     <h4 class="card-title">{{ adr.prenom ~ ' ' ~ adr.nom }}</h4>
@@ -24,10 +26,12 @@
     <a href="{{ path('supprimerAdresse',{'id': adr.id})}}" class="btn btn-danger">supprimer</a>
 
 
-  </div>
-</div>
-</div>
+  {# </div>
+</div> #}
 </div>
 </div>
 {% endfor %}
+</div>
+</div>
+</div>
 {% endblock %}

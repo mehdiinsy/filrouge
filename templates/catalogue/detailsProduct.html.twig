@@ -5,12 +5,13 @@
 {% block body %}
 <br>
 
-<div class="row justify-content-center align-items-center">
-    <div class="col-4 col-5 col-6 col-7 col-8 col-9 col-10">
+<div class="row justify-content-center m-4">
+<div class="col w-75 bg-warning rounded p-4" style="display: flex; flex-wrap: wrap;">
+<div class="row justify-content-center m-3">
 <hr>
 <div class="card text-white bg-primary m-5 w-75">
   <h3 class="card-header">
-  <a href="{{path('product', {'id' : product.id})}}"><div style="color: orange;">{{product.name}}</div></a>
+  <a href="{{path('product', {'id' : product.id})}}"><div class="row rounded justify-content-center" style="color: orange;">{{product.name}}</div></a>
 </h3>
   <div class="card-body">
     <h5 class="card-title">
@@ -18,7 +19,7 @@
 </h5>
   </div>
     <div>
-    <a href="{{path('product', {'id' : product.id})}}"> <img alt="oups" class="w-50 h-50 m-5 img-fluid img-thumbnail rounded" src="/assets/img/products/images/{{product.image}}"></a>
+    <a href="{{path('product', {'id' : product.id})}}"> <img alt="oups" class="row img-fluid rounded justify-content-center m-1" src="/assets/img/products/images/{{product.image}}"></a>
 </div>
   <div class="card-body">
     <p class="card-text"><p>{{product.description}}</p>
@@ -27,10 +28,11 @@
     <p>{{ (product.price /100) |number_format(2,',','.')}} € </p>
   </div>
   <div class="card-body">
-    <a href="{{ path('ajouterPanier', { 'id' : product.id})}}" class="btn btn-warning">Add to cart</a>
+    <a href="{{ path('ajouterPanier', { 'id' : product.id})}}" class="btn btn-info">Add to cart</a>
   </div>
   </div>
 <hr>
+  </div>
   </div>
   </div>
 

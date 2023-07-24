@@ -7,34 +7,46 @@
 {% endblock %}
 
 {% block body %}
+<div class="row justify-content-center m-4">
+<div class="col w-75 bg-dark rounded p-4 text-white" style="display: flex; flex-wrap: wrap;">
+<div class="row justify-content-center m-3">
 <div class="row">
-<div class="col-md-4">
 <div>
-<strong class="fs-6">Adresse de livraison choisie</strong><br>
+<h1 style="background-color: orange;">Récapitulatif des adresses choisies :</h1>
+<br>
+<h4 style="color: orange;">Adresse de livraison choisie :</h4>
 <hr>
-{{ adrL|replace({ '[br]' : '<br>' })|raw }}
+<p class="fs-5">{{ adrL|replace({ '[br]' : '<br>' })|raw }}</p>
 <hr>
 
 </div>
 <div>
-<strong class="fs-6">Adresse de facturation choisie</strong><br>
+<h4 style="color: orange;">Adresse de facturation choisie :</h4>
 <hr>
-{{ adrF|replace({ '[br]' : '<br>' })|raw }}
+<p class="fs-5">{{ adrF|replace({ '[br]' : '<br>' })|raw }}</p>
 <hr>
 
 </div>
 <div>
-<strong class="fs-6">Transporteur choisie</strong><br>
+<h4 style="color: orange;">Transporteur choisie :</h4>
 <hr>
-{{ transport.nameSociety }} <br>
+<p class="fs-5">{{ transport.nameSociety }} <br>
 {{ transport.descriptionSociety }} <br>
-{{ (transport.priceSociety)|number_format(2,',','.') }} €
+{{ (transport.priceSociety)|number_format(2,',','.') }} €</p>
 <hr>
 </div>
+
 </div>
-<div class="col-md-8">
-<h2>Récapitulatif de mon panier</h2>
+</div>
+</div>
+
+<div class="row justify-content-center m-4">
+<div class="col w-75 bg-dark rounded p-4 text-white" style="display: flex; flex-wrap: wrap;">
+<div class="row justify-content-center m-3">
+<h1 style="background-color: orange;">Récapitulatif de mon panier</h1>
 <div>
+<br>
+<hr>
 <table class="table table-hover">
 <thead>
 <tr>
@@ -45,7 +57,9 @@
 <th scope="col">Prix total</th>
 </tr>
 </thead>
-
+</div>
+</div>
+</div>
 <tbody>
 {% set t = null %}
 {% for prod in panier %}
@@ -75,7 +89,7 @@
     <strong>Sous-total : </strong><span> {{ (t / 100)|number_format(2,',','.') }} €</span><br>
     <strong>Frais de livraison : </strong><span> {{ (transport.priceSociety)|number_format(2,',','.') }} €</span><br>
     <strong>Total : </strong><span> {{ ((t / 100) + transport.priceSociety)|number_format(2,',','.') }} €</span><br>
-    <a class="btn btn-success btn-block mt-5" id="btnPayer">Payer |{{ ((t / 100) + transport.priceSociety)|number_format(2,',','.') }} €</a>
+    <a class="btn btn-success btn-block mt-5" id="btnPayer">Buy |{{ ((t / 100) + transport.priceSociety)|number_format(2,',','.') }} €</a>
 </div>
 </div>
 </div>

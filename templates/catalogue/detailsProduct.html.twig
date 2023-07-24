@@ -3,24 +3,26 @@
 {% block title %}Car !{% endblock %}
 
 {% block body %}
-<br>
+{# <br> #}
 
 <div class="row justify-content-center m-4">
 <div class="col w-75 bg-warning rounded p-4" style="display: flex; flex-wrap: wrap;">
 <div class="row justify-content-center m-3">
-<hr>
-<div class="card text-white bg-primary m-5 w-75">
-  <h3 class="card-header">
-  <a href="{{path('product', {'id' : product.id})}}"><div class="row rounded justify-content-center" style="color: orange;">{{product.name}}</div></a>
-</h3>
+{# <hr> #}
+<div class="card text-white bg-dark m-5 w-75">
+  <h1 class="card-header">
+  <a style="text-decoration: none;" href="{{path('product', {'id' : product.id})}}"><div class="row rounded justify-content-center" style="color: orange;">{{product.name}}</div></a>
+</h1>
   <div class="card-body">
-    <h5 class="card-title">
+    <h3 class="card-title">
     <p>{{product.subtitle}}</p>
-</h5>
+</h3>
   </div>
-    <div>
+
+    <div class="row justify-content-center mx-auto">
     <a href="{{path('product', {'id' : product.id})}}"> <img alt="oups" class="row img-fluid rounded justify-content-center m-1" src="/assets/img/products/images/{{product.image}}"></a>
 </div>
+
   <div class="card-body">
     <p class="card-text"><p>{{product.description}}</p>
   </div>

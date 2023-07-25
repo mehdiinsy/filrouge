@@ -1,45 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Cars !{% endblock %}
+{% block title %}Cars !
+{% endblock %}
 
 {% block body %}
-<br>
-<h1 class="row rounded justify-content-center m-4 bg-info" style="color: black; background-color: orange;">Find your car ( OO \../ OO ) </h1>
+	<br>
+	<h1 class="rounded text-center bg-info" style="color: black; background-color: orange;">Find your car ( OO \../ OO )
+	</h1>
 
-<br>
-<div class="row justify-content-center m-3">
-<div class="col w-75 bg-primary rounded p-4" style="display: flex; flex-wrap: wrap;">
-{# <div class="row justify-content-center m-3"> #}
-{% for product in products %}
+	<br>
+	<div
+		class="row justify-content-center bg-primary rounded px-4">
+		{# <div class="row justify-content-center m-3"> #}
+		{% for product in products %}
 
-<div class="card text-white bg-dark m-4 w-25" style="">
-  <h3 class="card-header">
-  <a style="text-decoration: none;" href="{{path('product', {'id' : product.id})}}"><div class="row rounded justify-content-center" style="color: orange;">{{product.name}}</div></a>
-</h3>
-  <div class="card-body">
-    <h5 class="card-title">
-    <p>{{product.subtitle}}</p>
-</h5>
-  </div>
-    <div class="row justify-content-center mx-auto">
-    <a href="{{path('product', {'id' : product.id})}}"> <img alt="oups" class="row img-fluid rounded justify-content-center m-1" src="/assets/img/products/images/{{product.image}}"></a>
-</div>
-  <div class="card-body">
-    <p class="card-text"><p>{{product.description}}</p>
-  </div>
-  <div class="card-body">
-    <p>{{ (product.price /100) |number_format(2,',','.')}} € </p>
-  </div>
-  <div class="card-body">
-    <a href="{{ path('ajouterPanier', { 'id' : product.id})}}" class="btn btn-info">Add to cart</a>
-  </div>
-  </div>
-  
-  <hr>
-{% endfor %}
-  {# </div> #}
-  </div>
-  </div>
+			<div class="card text-white bg-dark w-25 m-4">
+				<h3 class="card-header">
+					<a style="text-decoration: none;" href="{{path('product', {'id' : product.id})}}">
+						<div class="row rounded justify-content-center" style="color: orange;">{{product.name}}</div>
+					</a>
+				</h3>
+				<div class="card-body">
+					<h5 class="card-title">
+						<p>{{product.subtitle}}</p>
+					</h5>
+				</div>
+				<div class="row justify-content-center mx-auto">
+					<a href="{{path('product', {'id' : product.id})}}">
+						<img alt="oups" class="row img-fluid rounded justify-content-center m-1" src="/assets/img/products/images/{{product.image}}"></a>
+				</div>
+				<div class="card-body">
+					<p class="card-text"></p>
+					<p>{{product.description}}</p>
+				</div>
+				<div class="card-body">
+					<p>{{ (product.price /100) |number_format(2,',','.')}}
+						€
+					</p>
+				</div>
+				<div class="card-body">
+					<a href="{{ path('ajouterPanier', { 'id' : product.id})}}" class="btn btn-info">Add to cart</a>
+				</div>
+			</div>
+		{% endfor %}
+		<hr>
+		{# </div> #}
+
+	</div>
 {% endblock %}
 
 {# <div class="container w-25" style="background-color: #363636; color: #F0A33B; font-size: bold;">
@@ -70,8 +77,3 @@
 </div>
 </div>
 </div> #}
-
-
-
-
-

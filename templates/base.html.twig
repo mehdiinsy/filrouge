@@ -33,12 +33,12 @@
           <a class="nav-link" href="{{ path('home')}}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="{{ path('inscription')}}">Registration
+          <a class="nav-link" href="{{ path('inscription')}}">Registration
             <span class="visually-hidden">(current)</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="{{ path('catalogue')}}">Cars
+          <a class="nav-link" href="{{ path('catalogue')}}">Cars
             <span class="visually-hidden">(current)</span>
           </a>
         </li>
@@ -72,7 +72,7 @@
 
  <a class="nav-link" href="{{ path('compte')}}"><i class="fa-solid fa-user fa-2x mx-3"></i></a>
 
-     <a href="{{ path('panier')}}"> 
+     <a class="nav-link" href="{{ path('panier')}}"> 
      <i class="fa-solid fa-cart-shopping mx-1 fa-2x"></i>
      <span class="badgeNB position-absolute translate-middle badge rounded-pill bg-info">{{ monPanier.nbArticles() }}</span>
   <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z"/>

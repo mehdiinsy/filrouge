@@ -31,7 +31,10 @@ class MailerController extends AbstractController
             var_dump('error test');
         }
         // ...
-        // return $this->render('/mailer/mail.html.twig');
-        return new Response('Email was sent!');
+        return $this->render('/mailer/mail.html.twig');
+        // return new Response('Email was sent!');
     }
 }
+
+//php bin/console messenger:consume async /!\ taper cette commande pour recevoir les mail /!\
+//Symfony\Component\Mailer\Messenger\SendEmailMessage: async /!\ ou bien commenter cette commande dans messenger.yaml /!\

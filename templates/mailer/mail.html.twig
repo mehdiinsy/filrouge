@@ -1,7 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mailer!{% endblock %}
+{% block title %}Mailer!
+{% endblock %}
 
 {% block body %}
-mail envoyé
-{% endblock %}
+
+	<h1 class="text-center mt-5">Mail envoyé !</h1>
+
+	<br>    
+
+	<div class="text-center">
+		<a href="{{ path('home')}}">
+            <button type="button" class="btn btn-success">Back to home</button><a/> 
+		</div>
+
+	{% endblock %}

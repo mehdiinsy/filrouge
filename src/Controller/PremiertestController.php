@@ -13,6 +13,7 @@ class PremiertestController extends AbstractController
     {
         $name = "Marco";
         $adresse = "31 rue sphynx";
+        
         return $this->render('home/home.html.twig', [
             'controller_name' => 'PremiertestController',
             "nom" => $name,

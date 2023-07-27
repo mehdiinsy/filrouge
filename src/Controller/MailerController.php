@@ -16,7 +16,7 @@ class MailerController extends AbstractController
     public function sendEmail(MailerInterface $mailer): Response
     {
         $email = (new Email())
-            ->from('mehdi-belkateb@hotmail.com')
+            ->from(new Address('mehdi-belkateb@hotmail.com'))
             ->to('sedki.benali@kn-consulting.fr')
             //->cc('cc@example.com')
             //->bcc('bcc@example.com')

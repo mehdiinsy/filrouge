@@ -3,8 +3,6 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-    {% if app.user %}
-    {% endif %}
 <br>
 <div class="container" style="background-color: #FFC433; border-radius: 20%">
     <div class="row justify-content-center">
@@ -41,11 +39,14 @@
         Sign in
     </button>
     <hr>
+
+    {% if app.user %}
         <div class="mb-3 col-6">
             
 You are logged into the account :  {{ app.user.userIdentifier }}<a href="{{ path('app_logout') }}"> <br> se déconnecter</a>
 
         </div>
+    {% endif %}
 </form>
 </div>
 </div>

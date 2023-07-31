@@ -32,10 +32,10 @@ class ChoisirAdresseType extends AbstractType
             ])
 
             ->add('submit', SubmitType::class, [
-                'label' => 'Valider mes adresses',
+                'label' => 'Valid my adresses',
                 'attr' => [
-                    'class' => 'btn btn-success'
-                ] 
+                    'class' => 'd-block mx-auto btn btn-success'
+                ]
             ])
 
         ;

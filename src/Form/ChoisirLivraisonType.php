@@ -23,7 +23,7 @@ class ChoisirLivraisonType extends AbstractType
             ])
 
             ->add('submit', SubmitType::class, [
-                'label' => 'Valider ma livraison',
+                'label' => 'Valid my delivery',
                 'attr' => [
                     'class' => 'btn btn-success'
                 ] 

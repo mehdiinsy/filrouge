@@ -4,19 +4,21 @@
 
 {% block body %}
 
-<div class="row">
-<div class="col-2"></div>
-<div class="col-7">
+<br><br>
+
+	<div class="container rounded pb-3" style="background-color: #FFC433;">
+
+<br><br>
+
 <h1 class="text-center"> Sélectionner votre livreur </h1>
 <hr><br>
 
-</div>
 
 {% set formhtml %}
 {% set params = {'adrL' : adrL, 'adrF' : adrF } %}
 {{ form_start(f, { action : path('recap', params) }) }}
 {{ form_row(f.transporteurs, {
-    'label_attr' : { 'class' : 'fs-6'},
+    'label_attr' : { 'class' : 'fs-5'},
     'attr' : { 'class' : 'alert alert-primary'}
 }) 
 }}
@@ -25,10 +27,9 @@
 {{ form_widget(f) }}
 {{ form_end(f) }}
 
+</div>
 {% endset %}
 {{ formhtml|replace({'[br]' : '<br>'})|raw}}
-</div>
-</div>
 {% endblock %}
 
 

@@ -4,15 +4,12 @@
 
 {% block body %}
 <br>
-<div class="row justify-content-center m-3">
-{# <a href="#" class="card-link">Ajouter une adresse</a> #}
-    <a  class="btn btn-info w-50" href="{{ path('ajouterAdresse')}}">Add an adresse +</a>
-</div>
 
 <br>
+<h1 class="text-center">All my adresses</h1>
 <hr>
 <div class="row justify-content-center m-4">
-<div class="col w-75 bg-primary rounded p-4" style="display: flex; flex-wrap: wrap;">
+<div class="col w-75 rounded p-4" style="display: flex; flex-wrap: wrap; background-color: #FFC433;">
 <div class="row justify-content-center m-3">
 {% for adr in app.user.adresses %}
     {# <div class="row justify-content-center m-5">
@@ -31,6 +28,11 @@
 </div>
 </div>
 {% endfor %}
+    <hr>
+<div class="row justify-content-center m-3">
+{# <a href="#" class="card-link">Ajouter une adresse</a> #}
+    <a  class="btn btn-info w-50" href="{{ path('ajouterAdresse')}}">Add an adresse +</a>
+</div>
 </div>
 </div>
 </div>

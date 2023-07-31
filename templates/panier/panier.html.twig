@@ -5,6 +5,10 @@
 {% block body %}
 
 <br><br>
+<div class="container-fluid rounded" style="background-color: #FFC433;">
+<br><br>
+<h1 class="text-center">My cart</h1>
+<hr>
 <table class="table table-dark">
 <thead>
 <tr>
@@ -49,5 +53,6 @@
     <span>Total du panier : {{ (t / 100)|number_format(2,',','.') }} €</span><br>
     <a class="btn btn-success btn-block mt-5" href="{{ path('choisirAdresse')}}"><i class="fas fa-check"></i>Valider mon panier</a>
 </div>
-
+<br>
+</div>
 {% endblock %}

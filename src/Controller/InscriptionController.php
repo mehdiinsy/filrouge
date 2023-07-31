@@ -41,6 +41,8 @@ class InscriptionController extends AbstractController
             $this->em->persist($user);
             //maj dans la bdd
             $this->em->flush();
+
+            return $this->redirect($this->generateUrl('app_mailer'));
         }
         return $this->render('inscription/inscription.html.twig', [
             'formInscription' => $form->createView()

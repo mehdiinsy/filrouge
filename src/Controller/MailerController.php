@@ -24,10 +24,11 @@ class MailerController extends AbstractController
             //->priority(Email::PRIORITY_HIGH)
             ->subject('Hello world')
             ->text('Sending emails is fun again!')
-            ->html('<p>42</p>');
+            ->html('<h1>Congratulations !</h1><p>You have just successfully registered on the best car import site !</p>');
         try {
             $mailer->send($email);
-        } catch (TransportExceptionInterface $e) {
+        } 
+        catch (TransportExceptionInterface $e) {
             var_dump('error test');
         }
         // ...

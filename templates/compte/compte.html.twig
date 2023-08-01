@@ -14,11 +14,11 @@
 <h1>Account menu</h1>
 <hr>
 <ul>
-<li><a href="{{path('UpdateCompte')}}">Manage profile</a></li>
-<li><a href="{{path('mesAdresse')}}">Manage my adresses</a></li>
-<li>You are logged into the account :{{ app.user.userIdentifier }}<a href="{{ path('app_logout') }}">
+<li><a href="{{path('UpdateCompte')}}">Manage profile</a></li><br>
+<li><a href="{{path('mesAdresse')}}">Manage my adresses</a></li><br>
+<li><a href="{{ path('app_logout') }}">se déconnecter</a>
 								<br>
-								se déconnecter</a>
+								You are logged into the account :{{ app.user.userIdentifier }}
 
 						</li>
 							

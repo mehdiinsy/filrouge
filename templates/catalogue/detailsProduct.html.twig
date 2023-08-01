@@ -29,9 +29,16 @@
   <div class="card-body">
     <p>{{ (product.price /100) |number_format(2,',','.')}} € </p>
   </div>
-  <div class="card-body">
-    <a href="{{ path('ajouterPanier', { 'id' : product.id})}}" class="btn btn-info">Add to cart</a>
-  </div>
+  {% if app.user %}
+				<div class="card-body">
+					<a href="{{ path('ajouterPanier', { 'id' : product.id})}}" class="btn btn-info">Add to cart</a>
+				</div>
+				{% endif %}
+				{% if app.user == false %}
+				<div class="card-body">
+					<a href="{{ path('app_login')}}" class="btn btn-info">Add to cart</a>
+				</div>
+				{% endif %}
   </div>
 <hr>
   </div>

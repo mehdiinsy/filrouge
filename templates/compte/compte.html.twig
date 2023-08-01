@@ -16,6 +16,12 @@
 <ul>
 <li><a href="{{path('UpdateCompte')}}">Manage profile</a></li>
 <li><a href="{{path('mesAdresse')}}">Manage my adresses</a></li>
+<li>You are logged into the account :{{ app.user.userIdentifier }}<a href="{{ path('app_logout') }}">
+								<br>
+								se déconnecter</a>
+
+						</li>
+							
 {# <li><a href="#">Historique</a></li> #}
 </ul>
 </div>

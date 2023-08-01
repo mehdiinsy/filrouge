@@ -38,9 +38,16 @@
 						€
 					</p>
 				</div>
+				{% if app.user %}
 				<div class="card-body">
 					<a href="{{ path('ajouterPanier', { 'id' : product.id})}}" class="btn btn-info">Add to cart</a>
 				</div>
+				{% endif %}
+				{% if app.user == false %}
+				<div class="card-body">
+					<a href="{{ path('app_login')}}" class="btn btn-info">Add to cart</a>
+				</div>
+				{% endif %}
 			</div>
 		{% endfor %}
 		<hr>

@@ -11,13 +11,6 @@ class PremiertestController extends AbstractController
     #[Route('/', name: 'home')]
     public function index(): Response
     {
-        $name = "Marco";
-        $adresse = "31 rue sphynx";
-
-        return $this->render('home/home.html.twig', [
-            'controller_name' => 'PremiertestController',
-            "nom" => $name,
-            "adr" => $adresse
-        ]);
+        return $this->render('home/home.html.twig');
     }
 }
